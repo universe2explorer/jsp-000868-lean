@@ -1,0 +1,39 @@
+Axiom Audit for JSP-000868 Lean Formalization
+Date: 2026-10-10
+==============================================
+
+JSP000868.JensenWeight.weighted_jensen:
+'JSP000868.JensenWeight.weighted_jensen' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Status: ✅ CLEAN — only standard axioms (propext, Classical.choice, Quot.sound).
+No extra axioms, no sorry/admit.
+
+----------------------------------------------
+
+JSP000868.JensenWeight.oneDim_bound:
+Not available — oneDim_bound is in Main.lean which does not currently build.
+
+----------------------------------------------
+
+jsp000868 (main theorem):
+Not available — Main.lean does not currently build due to technical API issues
+in the root family construction (List/Multiset API drift in Lean 4.33).
+
+----------------------------------------------
+
+Summary:
+- JensenWeight modules (Quadratic, PoissonKernel, LogBoundary, JensenWeight main):
+  All build successfully with 0 errors, 0 sorry/admit/axiom.
+  The weighted Jensen inequality (weighted_jensen) has clean axioms.
+- Main.lean: Does not build. 20 technical errors related to Lean 4.33 API drift
+  in List/Multiset/Fin handling for the polynomial root family construction.
+  Contains 1 temporary sorry (in helper lemma Multiset.exists_eq_map_fin_univ)
+  used during development to isolate issues.
+
+## 2026-10-10 — Main.lean complete, full build green
+`lake build` (full project): SUCCESS, exit 0, 3484 jobs.
+sorry/admit/axiom-keyword grep across JSP000868/*.lean: zero hits.
+#print axioms (Lean v4.33.0, Mathlib v4.33.0):
+'JSP000868.oneDim_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP000868.jsp000868' depends on axioms: [propext, Classical.choice, Quot.sound]
+Both theorems are axiom-clean (standard Lean/Mathlib foundation axioms only).
